@@ -273,30 +273,6 @@
   </style>
 </head>
 <body>
-  <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDOu2dkwK6TIbAHUh_D7GyrnqVn05WiqCg",
-    authDomain: "tostar-1a81e.firebaseapp.com",
-    databaseURL: "https://tostar-1a81e-default-rtdb.firebaseio.com",
-    projectId: "tostar-1a81e",
-    storageBucket: "tostar-1a81e.appspot.com",
-    messagingSenderId: "162841373933",
-    appId: "1:162841373933:web:0c8d4c180919bf7ae0b0e4",
-    measurementId: "G-9J1HN8RJ5T"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
   <div class="largeContainer">
     <button id="right-button" onclick="updatePopup()"> <<< </button>
 
@@ -353,13 +329,14 @@
     <div class="sideplace">
       <div class="plus" type="button" id="addScore" onclick="display('+')">+</div>
       <div class="minus" type="button" id="decrementScore" onclick="display('-')">—</div>
-      <button class="nxt" type="button" value="=" onclick="calculate()" id="btn">Total</button>
+      <button class="nxt" type="button" value="=" onclick="calculate()" id="btn">Wasted</button>
       <button class="nxt" type="button" value=" " onclick="clearScreen()" id="next-button">Next</button>
     </div>
     <script>
         function displayresults(value) {
     document.getElementById("result").value += value;
 }
+  
 
       // This function evaluates the expression and returns result
 function calculate() {
@@ -424,6 +401,7 @@ displayPlayer();
 
 let sphereButtons = document.querySelectorAll('.sphere');
 let plusButton = document.querySelector('.plus');
+let btnBlur = document.querySelector('#btn');
 
 let selectedSphere = null;
 
@@ -442,6 +420,13 @@ plusButton.addEventListener('click', () => {
     selectedSphere.style.filter = "blur(3px)";
   }
 });
+btnBlur.addEventListener('click', () => {
+  if (selectedSphere) {
+    selectedSphere.disabled = true;
+    selectedSphere.style.filter = "blur(3px)";
+  }
+});
+
 
     </script>
   </div>
@@ -476,6 +461,7 @@ plusButton.addEventListener('click', () => {
   
   // Call the updatePopup function whenever you want to update the content of the "myPopup" element
   updatePopup();
+  
 
   </script>
 </body>
